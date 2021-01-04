@@ -9,6 +9,7 @@ bilibili URL：https://space.bilibili.com/36139192
 (数字表示视频URL分p)  
 ### 一、对比runtimecompiler和runtimeonly (95-96)
 #### 1.1 初始化2个项目
+使用指令：`vue init webpack 项目名`  
 * 分别选择`runtime+compiler(运行时+编译器)`和`runtime-only(只含有运行时)`模式创建  
 * 关闭Eslint规范在`config/index.js`里改成`useEslint: false` 
   
@@ -55,7 +56,7 @@ render: function (createElement) {
 #### 1.5 对于组件里的template
 导入之后由`vue-template-compiler`插件自动将template转换成render()  
 
-### 二、Vue CLI3的创建和使用
+### 二、Vue CLI3的创建和使用 (97)
 #### 2.1 认识Vue CLI3
 vue-cli3与2版本有很大区别：  
 * vue-cli3是基于webpack 4打造，vue-cli2还是webapck 3
@@ -63,5 +64,34 @@ vue-cli3与2版本有很大区别：
 * vue-cli3提供了vue ui命令，提供了可视化配置，更加人性化
 * 移除了static文件夹，新增了public文件夹，并且index.html移动到public中
 
+#### 2.2 创建Vue CLI3
+使用指令：`vue create 项目名`  
+配置项目：
+1. 手动选择特性Manually select features(按空格选择和取消)
+2. 特性有：**Babel、TypeScript、Progressive Web App (PWA) Support、Router、Vuex、CSS Pre-processors、Linter / Formatter、Unit Testing、E2E Testing**等
+3. 配置文件夹In dedicated config files
+4. 保存为一个预设方案,Yes,如:coderwhy
+5. 选择NPM或Yarn(新版本可能没有)
+  
+* 若想**删除自定义预设**，在`C:\Users\Administrator\.vuerc`文件里修改删除(rc后缀run command，终端运行，Linux命名)
+#### 2.3 Vue CLI3项目的目录结构
+明显在Vue CLI2基础上，简化了很多  
+* node_modules，node的模块
+* public文件夹，相当于static静态文件
+* src资源文件夹
+* .gitignore上传仓库忽略文件
+* babel.config.js，Babel将ES6编译成ES5
+* package.json，简化了配置cli-service间接管理
+* package-lock.json，配置的缓存文件
 
-
+#### 2.4 编译运行项目
+运行：`npm run serve` ，发布：`npm run build`  
+* 在Vue构造函数时，如果没有没有el属性时，可以使用`.$mount('#app')`进行手动挂载。
+```javaScript
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
+```
+### 三、Vue CLI3的配置文件查看和修改 (98)
+#### 3.1 Vue CLI3的配置文件
+1. 方法一：在项目CMD里使用：`vue ui`打开网页版插件管理工具，点击**导入**项目文件夹

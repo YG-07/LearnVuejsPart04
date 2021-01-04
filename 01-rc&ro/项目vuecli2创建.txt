@@ -1,0 +1,6 @@
+初始化创建2个项目，分别使用指令：
+vue init webpack runtimecompiler
+vue init webpack runtimecompiler  
+* 分别选择：
+runtime+compiler(运行时+编译器)模式
+runtime-only(只含有运行时)模式
