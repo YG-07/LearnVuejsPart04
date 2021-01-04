@@ -56,7 +56,7 @@ render: function (createElement) {
 #### 1.5 对于组件里的template
 导入之后由`vue-template-compiler`插件自动将template转换成render()  
 
-### 二、Vue CLI3的创建和使用 (97)
+### 二、Vue CLI3的创建和使用 (97-98)
 #### 2.1 认识Vue CLI3
 vue-cli3与2版本有很大区别：  
 * vue-cli3是基于webpack 4打造，vue-cli2还是webapck 3
@@ -92,6 +92,46 @@ new Vue({
   render: h => h(App),
 }).$mount('#app')
 ```
-### 三、Vue CLI3的配置文件查看和修改 (98)
-#### 3.1 Vue CLI3的配置文件
-1. 方法一：在项目CMD里使用：`vue ui`打开网页版插件管理工具，点击**导入**项目文件夹
+#### 2.5 Vue CLI3的配置文件查看和修改
+* 在项目CMD里使用：`vue ui`打开网页版插件管理工具，点击**导入**项目文件夹
+
+#### 2.6 箭头函数的使用和this指向
+#### 2.6.1 定义函数的方式：  
+1. 直接function
+```javaScript
+const aaa = function () {}
+```
+2. 对象字面量里定义
+```javaScript
+const obj = {
+  bbb: function () {},
+  bb() {}
+}
+```
+3. ES6箭头函数
+```javaScript
+//一个参数可以省略括号
+const power = num => { return num * num }
+//只有一行代码可以省略return关键字
+const sum = (num1, num2) => num + num 
+```
+* 箭头函数应用，如：定时器或其他函数作为参数时
+```javaScript
+setTimeout(() => {}, 100)
+```
+#### 2.6.2 箭头函数中的this
+* 箭头函数的this例子：
+```javaScript
+const obj = {
+  aaa() {
+    setTimeout(function () {
+      console.log(this) //window
+    })
+    setTimeout(() => {
+      console.log(this) //obj对象
+    })
+  }
+}
+```
+结论：`箭头函数的this是向外层作用域中，一层层查找this，直到有this的定义`  
+
